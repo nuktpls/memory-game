@@ -1,0 +1,47 @@
+name: Ambiente de testes - diadodiabetes.intest.com.br
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    name: Obtém o código-fonte e realiza a construção da aplicação.
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v2
+
+      - name: Verificando o cache dos pacotes do Node
+        uses: actions/cache@v2
+        with:
+          path: /tmp/node-cache
+          key: ${{ runner.os }}-${{ hashFiles('**/package.json') }}
+
+      - name: Setup do NodeJS para o tema
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Instalando o CLI do gatsby
+        run: yarn global add gatsby-cli
+
+      - name: Executando yarn install
+        run: yarn
+
+      - name: Executando a construção dos assets
+        run: gatsby build
+
+      - name: Executando a limpeza do cache dos assets
+        run: gatsby clean
+
+      - name: Copiando arquivos do tema para ambiente de testes
+        uses: burnett01/rsync-deployments@4.1
+        with:
+          switches: --no-perms -O --exclude=.git/ --exclude=node_modules/ --exclude=.env --delete -Prltvz
+          path: ./
+          remote_path: /mnt/intest-volume/diabetes-brasil-dia-do-diabetes/public
+          remote_host: ${{ secrets.SSH_DEV_DEPLOY_HOST }}
+          remote_port: 22
+          remote_user: ${{ secrets.SSH_DEV_DEPLOY_USER }}
+          remote_key: ${{ secrets.SSH_DEV_DEPLOY_KEY }}

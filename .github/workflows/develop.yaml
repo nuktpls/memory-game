@@ -1,0 +1,78 @@
+name: Ambiente de testes - diadodiabetes.intest.com.br
+on:
+  push:
+    branches:
+      - develop
+env:
+  REGISTRY: 'registry.digitalocean.com/intest'
+  IMAGE_NAME: 'diabetes-brasil-dia-do-diabetes'
+
+jobs:
+  build:
+    name: Obtém o código-fonte e realiza a construção da aplicação.
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v2
+
+      - name: Set outputs
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+
+      - name: Check outputs
+        run: echo ${{ steps.vars.outputs.sha_short }}
+
+      - name: Construindo imagem do projeto
+        run: docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.sha_short }} .
+
+      - name: Instalando o CLI da DigitalOcean
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Realizando login temporário no repositório de imagens
+        run: doctl registry login --expiry-seconds 600
+
+      - name: Envia a imagem para o repositório de imagens
+        run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.sha_short }}
+
+  release:
+    name: Acessa o servidor de testes e configura o container da aplicação
+    needs: build
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v2
+
+      - name: Set outputs
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+
+      - name: Check outputs
+        run: echo ${{ steps.vars.outputs.sha_short }}
+
+      - name: Verifica o status do container existente
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_DEV_DEPLOY_HOST }}
+          username: ${{ secrets.SSH_DEV_DEPLOY_USER }}
+          key: ${{ secrets.SSH_DEV_DEPLOY_KEY }}
+          port: 22
+          script: |
+            echo "Obtendo imagem atualizada do repositório"
+            docker login -u ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} -p ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} registry.digitalocean.com
+            docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.sha_short }}
+            docker logout registry.digitalocean.com
+            echo "Removendo container existente"
+            docker rm -f diabetes-brasil-dia-do-diabetes
+            echo "Criando novo container para a imagem ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.sha_short }}"
+            docker run -d -p 9000 \
+              --name="diabetes-brasil-dia-do-diabetes" \
+              --workdir="/app" \
+              --label "traefik.http.routers.diabetes-brasil-dia-do-diabetes.rule=Host(\`diadodiabetes.intest.com.br\`)" \
+              --label "traefik.http.routers.diabetes-brasil-dia-do-diabetes.tls=true" \
+              --label "traefik.http.routers.diabetes-brasil-dia-do-diabetes.tls.certresolver=lets-encrypt" \
+              --label "traefik.http.services.diabetes-brasil-dia-do-diabetes.loadbalancer.server.port=9000" \
+              --network traefik_web \
+              --ip="172.21.0.12" \
+              "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.sha_short }}"

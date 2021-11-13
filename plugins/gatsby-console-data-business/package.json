@@ -1,0 +1,17 @@
+{
+  "name": "gatsby-console-data-business",
+  "version": "0.0.1",
+  "private": true,
+	"main": "index.js",
+  "description": "Console data business on build.",
+  "author": "Milton Bolonha <mbolonha@studiovisual.com.br>",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"No build script setup\""
+  },
+  "license": "0BSD"
+}
