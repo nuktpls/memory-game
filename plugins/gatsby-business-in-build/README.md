@@ -16,7 +16,7 @@ To get started to log data on your build, you can follow these steps:
 1. Install The Business Log - gatsby-plugin with:
 
 ```shell
-npm i gatsby-console-data-business
+npm i gatsby-business-in-build
 ```
 
 If you already have customize your gatsby-config.js, you can use it. Otherwise, you can [create a new gatsby-config.js file](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/) to setting your plugin.
@@ -27,7 +27,7 @@ The prlgin directory structure looks like this:
 /your-gatsby-site
 ├── gatsby-config.js
 
-/gatsby-console-data-business
+/gatsby-business-in-build
 ├── index.js
 ├── package.json
 └── README.md

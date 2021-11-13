@@ -4,42 +4,52 @@
   "private": true,
   "description": "O Jogo da Memória é um app desenvolvido pela ADJ - ASSOCIAÇÃO DE DIABETES JUVENIL.",
   "author": {
-		"name": "miltonbolonha",
-		"email": "mbolonha@studiovisual.com.br"
-	},
+    "name": "miltonbolonha",
+    "email": "mbolonha@studiovisual.com.br"
+  },
   "coauthor": {
-		"name": "Studio Visual",
-		"email": "contato@studiovisual.com.br"
-	},
+    "name": "Studio Visual",
+    "email": "contato@studiovisual.com.br"
+  },
   "coauthordesc": "Agência Especializada em WordPress. Especialista em WordPress, Projetos Digitais, Soluções Web, Marketing Digital e Consultoria Digital.",
-	"repository": "https://github.com/studiovisual/diabetes-brasil-jogo-da-memoria",
-	"urlPrefix": "/jogodamemoria",
-	"appName": "Jogo da Memória - ADJ - ASSOCIAÇÃO DE DIABETES JUVENIL",
-	"appLogic": "Jogo da Memória",
-	"siteUrl": "https://adj.org.br/jogodamemoria",
-	"clientOrg": "ADJ - ASSOCIAÇÃO DE DIABETES JUVENIL",
-	"clientShortName": "ADJ - Diabetes Brasil",
-	"clientSite": "https://adj.org.br/",
-	"clientSocial": {
-		"instagram": "https://www.instagram.com/adjdiabetesbrasil/",
-		"facebook": "https://www.facebook.com/ADJDiabetesBrasil/",
-		"twitter": "https://twitter.com/ADJ_Diabetes_BR",
-		"youtube": "https://www.youtube.com/channel/UCj5rxMlBYLDiRSVdy2FprMA"
-	},
-	"themeColor": "#eb412c",
-	"backgroundColor": "#fff",
-	"displayManifest": "fullscreen",
-	"iconManifest": "diabetes-brasil-favicon.svg",
-	"importFont": {
-		"font01": "Mulish",
-		"font02": "Alegreya Sans:300,400,500,700,800,900",
-		"font03": "Roboto"
-	},
+  "repository": "https://github.com/studiovisual/diabetes-brasil-jogo-da-memoria",
+  "urlPrefix": "/jogodamemoria",
+  "appName": "Jogo da Memória - ADJ - ASSOCIAÇÃO DE DIABETES JUVENIL",
+  "appLogic": "Jogo da Memória",
+  "siteUrl": "https://adj.org.br/jogodamemoria",
+  "clientOrg": "ADJ - ASSOCIAÇÃO DE DIABETES JUVENIL",
+  "clientShortName": "ADJ - Diabetes Brasil",
+  "clientSite": "https://adj.org.br/",
+  "clientSocial": {
+    "instagram": "https://www.instagram.com/adjdiabetesbrasil/",
+    "facebook": "https://www.facebook.com/ADJDiabetesBrasil/",
+    "twitter": "https://twitter.com/ADJ_Diabetes_BR",
+    "youtube": "https://www.youtube.com/channel/UCj5rxMlBYLDiRSVdy2FprMA"
+  },
+  "themeColor": "#eb412c",
+  "backgroundColor": "#fff",
+  "displayManifest": "fullscreen",
+  "iconManifest": "diabetes-brasil-favicon.svg",
+  "importFont": {
+    "font01": "Mulish",
+    "font02": "Alegreya Sans:300,400,500,700,800,900",
+    "font03": "Roboto"
+  },
   "keywords": [
-    "jogo da memória",
-    "reactjs",
+    "nüktpls",
+    "instituto organizacionista",
+    "organizacionismo",
+    "edu4dev",
+    "javascript",
     "gatsby",
-    "javascript"
+    "gatsby-plugin",
+    "gatsbyjs",
+    "reactjs",
+    "nuktpls",
+    "nuktpls-cli",
+    "milton bolonha",
+    "edu4dev",
+    "the-offspring"
   ],
   "scripts": {
     "develop": "gatsby develop",
@@ -50,7 +60,13 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
+    "app-root-path": "^3.0.0",
+    "chalk": "^4.1.2",
     "classnames": "^2.3.1",
+    "clear-any-console": "^1.16.2",
+    "dotenv": "^10.0.0",
+    "first-run": "^3.0.0",
+    "fs-extra": "^10.0.0",
     "gatsby": "^4.1.0",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-catch-links": "^4.1.0",
@@ -68,7 +84,10 @@
     "gatsby-source-filesystem": "^4.1.0",
     "gatsby-transformer-remark": "^5.1.0",
     "gatsby-transformer-sharp": "^4.1.0",
-    "node-fetch": "^3.0.0",
+    "log-symbols": "^5.0.0",
+    "log-update": "^5.0.0",
+    "meow": "^10.1.1",
+    "node-fetch": "^3.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-full-screen": "^1.1.0",
@@ -77,10 +96,12 @@
     "react-icons": "^4.3.1",
     "react-responsive-carousel": "^3.2.22",
     "react-share": "^4.4.0",
+    "resolve-path": "^1.4.0",
     "sass": "^1.43.4",
+    "semver": "^7.3.5",
+    "terminal-kit": "^2.1.8",
     "xterm-addon-web-links": "^0.4.0",
-    "xterm-for-react": "^1.0.4",
-		"gatsby-console-data-business": "0.0.1"
+    "xterm-for-react": "^1.0.4"
   },
   "devDependencies": {
     "prettier": "^2.4.1",

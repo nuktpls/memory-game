@@ -3,45 +3,76 @@ on:
   push:
     branches:
       - master
+env:
+  REGISTRY: 'registry.myserver.com/intest'
+  IMAGE_NAME: 'nuktpls-atomic-theme'
 
 jobs:
-  release:
+  build:
     name: Obtém o código-fonte e realiza a construção da aplicação.
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout do repositório
         uses: actions/checkout@v2
 
-      - name: Verificando o cache dos pacotes do Node
-        uses: actions/cache@v2
+      - name: Set outputs
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+
+      - name: Check outputs
+        run: echo ${{ steps.vars.outputs.sha_short }}
+
+      - name: Construindo imagem do projeto
+        run: docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.sha_short }} .
+
+      - name: Instalando o CLI da DigitalOcean XXXXX
+        uses: digitalocean/action-doctl@v2
         with:
-          path: /tmp/node-cache
-          key: ${{ runner.os }}-${{ hashFiles('**/package.json') }}
+          token: ${{ secrets.ENV_VAR }}
 
-      - name: Setup do NodeJS para o tema
-        uses: actions/setup-node@v2
+      - name: Realizando login temporário no repositório de imagens
+        run: doctl registry login --expiry-seconds 600
+
+      - name: Envia a imagem para o repositório de imagens
+        run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.sha_short }}
+
+  release:
+    name: Acessa o servidor de testes e configura o container da aplicação
+    needs: build
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v2
+
+      - name: Set outputs
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+
+      - name: Check outputs
+        run: echo ${{ steps.vars.outputs.sha_short }}
+
+      - name: Verifica o status do container existente
+        uses: appleboy/ssh-action@master
         with:
-          node-version: '14'
-
-      - name: Instalando o CLI do gatsby
-        run: yarn global add gatsby-cli
-
-      - name: Executando yarn install
-        run: yarn
-
-      - name: Executando a construção dos assets
-        run: gatsby build
-
-      - name: Executando a limpeza do cache dos assets
-        run: gatsby clean
-
-      - name: Copiando arquivos do tema para ambiente de testes
-        uses: burnett01/rsync-deployments@4.1
-        with:
-          switches: --no-perms -O --exclude=.git/ --exclude=node_modules/ --exclude=.env --delete -Prltvz
-          path: ./
-          remote_path: /mnt/intest-volume/diabetes-brasil-dia-do-diabetes/public
-          remote_host: ${{ secrets.SSH_DEV_DEPLOY_HOST }}
-          remote_port: 22
-          remote_user: ${{ secrets.SSH_DEV_DEPLOY_USER }}
-          remote_key: ${{ secrets.SSH_DEV_DEPLOY_KEY }}
+          host: ${{ secrets.SSH_DEV_DEPLOY_HOST }}
+          username: ${{ secrets.SSH_DEV_DEPLOY_USER }}
+          key: ${{ secrets.SSH_DEV_DEPLOY_KEY }}
+          port: 22
+          script: |
+            echo "Obtendo imagem atualizada do repositório"
+            docker login -u ${{ secrets.ENV_VAR }} -p ${{ secrets.ENV_VAR }} registry.myserver.com
+            docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.sha_short }}
+            docker logout registry.myserver.com
+            echo "Removendo container existente"
+            docker rm -f nuktpls-atomic-theme
+            echo "Criando novo container para a imagem ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.sha_short }}"
+            docker run -d -p 9000 \
+              --name="nuktpls-atomic-theme" \
+              --workdir="/app" \
+              --label "traefik.http.routers.nuktpls-atomic-theme.rule=Host(\`diadodiabetes.intest.com.br\`)" \
+              --label "traefik.http.routers.nuktpls-atomic-theme.tls=true" \
+              --label "traefik.http.routers.nuktpls-atomic-theme.tls.certresolver=lets-encrypt" \
+              --label "traefik.http.services.nuktpls-atomic-theme.loadbalancer.server.port=9000" \
+              --network traefik_web \
+              --ip="000.00.0.00" \
+              "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.sha_short }}"

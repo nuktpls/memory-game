@@ -37,7 +37,7 @@ module.exports = {
 		`gatsby-plugin-offline`,
 		`gatsby-plugin-react-helmet`,
 		{
-			resolve: `gatsby-console-data-business`,
+			resolve: `gatsby-business-in-build`,
 			options: {
 				message: 'ZUMBA MORTAL',
 				appName: businessInfos.appName,

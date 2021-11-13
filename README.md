@@ -1,13 +1,13 @@
-# Dia do Diabetes🃏 Jogo da Memória - Studio Visual
+# Atomic Theme
 
-[![Ambiente de testes - diadodiabetes.intest.com.br](https://github.com/studiovisual/diabetes-brasil-jogo-da-memoria/actions/workflows/develop.yaml/badge.svg?branch=develop)](https://github.com/studiovisual/diabetes-brasil-jogo-da-memoria/actions/workflows/develop.yaml)
+[![Ambiente de testes não definido](https://github.com/nuktpls/atomic-theme/actions/workflows/develop.yaml/badge.svg?branch=develop)](https://github.com/nuktpls/atomic-theme/actions/workflows/develop.yaml)
 
 ## 🚀 Para iniciar localmente
 
 0.  **Pré-requisitos**
 
-    Este jogo da memória foi construído usando o boilerplate do autor Milton Bolonha,
-    usado para fins comerciais explorados pela Studio Visual.
+    Este tema foi construído usando o boilerplate do autor Milton Bolonha,
+    usado para fins pedagógicos, explorados pelo Instituto Organizacionista.
 
     As seguintes tecnologias lideram este desenvolvimento:
 
@@ -19,7 +19,8 @@
     - nodejs;
     - gatsby-cli;
     - reactjs;
-    - sass.
+    - sass;
+    - git workflow.
 
     Tecnologias opcionais:
 
@@ -31,7 +32,7 @@
 
 1.  **Crie um site em Gatsby usando o git da Studio Visual.**
 
-    Use a CLI do Gatsby para gerar um novo site/jogo da memória.
+    Use a CLI do Gatsby para gerar um novo site/tema.
 
     ```shell
     # certifique-se de ter o Gatsby instalado e atualizado

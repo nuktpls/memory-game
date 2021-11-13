@@ -1,7 +1,6 @@
 {
-  "name": "gatsby-console-data-business",
-  "version": "0.0.1",
-  "private": true,
+  "name": "gatsby-business-in-build",
+  "version": "0.1.0",
 	"main": "index.js",
   "description": "Console data business on build.",
   "author": "Milton Bolonha <mbolonha@studiovisual.com.br>",
