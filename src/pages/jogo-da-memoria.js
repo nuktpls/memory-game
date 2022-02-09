@@ -6,7 +6,7 @@ import FooterBlock from '../modules/block-builder/FooterBlock'
 import PageHeader from '../modules/block-builder/PageHeader'
 import Layout from '../modules/layout'
 
-const AlimentacaoPage = ({ data }) => {
+const MemoriaPage = ({ data }) => {
 	const firstElementsArray = [
 		{
 			type: 'Carda',
@@ -127,7 +127,7 @@ const AlimentacaoPage = ({ data }) => {
 		</Layout>
 	)
 }
-export default AlimentacaoPage
+export default MemoriaPage
 
 export const queryAlimentacao = graphql`
 	query imgsAlimentacao {
