@@ -11,7 +11,10 @@ const PageHeader = ({ title, logotipoJogoMemoria, paragraph }) => {
 	return (
 		<MainWrapper title={titleSlug}>
 			<div className="index-first-row">
-				<Layout type="BLOCK_IMAGE" opt={{ queryCard: logotipoJogoMemoria }} />
+				<Layout
+					type="BLOCK_IMAGE"
+					opt={{ queryCard: logotipoJogoMemoria, classes: 'header-logo' }}
+				/>
 				<p className="index-paragraph">{paragraph}</p>
 			</div>
 		</MainWrapper>

@@ -1,7 +1,7 @@
 // Colors
 $system__color: #eb412c;
-$brand__color: #eb412c;
-$bodyColor__bgColor: #fff;
+$brand__color: #ffed00;
+$bodyColor__bgColor: #000;
 
 $cta__color: #0c0c0c;
 $additional__color: #fff;
@@ -10,14 +10,14 @@ $additionalDark__color: $brand__color;
 
 $brand_black__color: #0c0c0c;
 $brand_white__color: #fff;
-$black__color: #1b1b1b;
+$black__color: #fff;
 
 // $grayscale_100__color: #fcfcfc;
 $grayscale_200__color: #ececec;
 $grayscale_300__color: #e3e3e3;
 $grayscale_600__color: #a3a3a3;
 
-$secondary_pink__color: #ff4d59;
+$secondary_pink__color: $brand__color;
 
 $btn_brown__active: #e0c6ac;
 $btn_brown__not_active: $brand__color;
@@ -37,7 +37,7 @@ $color__light-grey: #999999;
 // Breakpoints
 // screen vars
 $header__height: 121px;
-$widescreen__size: 1170px;
+$widescreen__size: 768px;
 $tablet__size: 768px;
 $tabletHack__size: 769px;
 $tabletHackMinimal__size: 425px;
@@ -53,7 +53,7 @@ $tabletIndexButtons__maxWidth: 350px;
 //Spaces
 $s__space: 16pt;
 $m__space: 24pt;
-$heading__top-padding: 14pt;
+$heading__top-padding: 0;
 
 //Borders
 // $xs__radius: 3px;

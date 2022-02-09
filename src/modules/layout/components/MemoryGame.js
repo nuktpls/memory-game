@@ -137,7 +137,7 @@ const MemoryGame = ({
 									className="button-restart pink-button modal-pink-index"
 									to="/"
 								>
-									Visualizar todos os temas
+									Visualizar todos os jogos
 								</Link>
 							</div>
 						</div>

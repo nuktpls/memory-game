@@ -1,20 +1,8 @@
 {
 	"folders": [
 		{
-			"name": "VScode Edu4Dev Theme",
-			"path": "./.vscode/extensions/vscode-edu4dev-theme-color"
-		},
-		{
-			"name": "BiB - Gatsby Custom Plugin",
-			"path": "./plugins/gatsby-business-in-build"
-		},
-		{
 			"name": "BlockBuilder",
 			"path": "./src/modules/block-builder"
-		},
-		{
-			"name": "NÜ Modules",
-			"path": "./src/nu_modules"
 		},
 		{
 			"name": "Pages",
@@ -25,11 +13,11 @@
 			"path": "./src/scss"
 		},
 		{
-			"name": "Source Code",
+			"name": "Project Root",
 			"path": "./src"
 		},
 		{
-			"name": "Root",
+			"name": "Root files",
 			"path": "."
 		}
 	],

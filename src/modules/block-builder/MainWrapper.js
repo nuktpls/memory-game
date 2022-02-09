@@ -7,9 +7,8 @@ const MainWrapper = ({ children, title, opt }) => {
 			type="ROW"
 			opt={{
 				isBoxed: true,
-				classes: (opt && opt.classes) || 'main-wrapper',
+				classes: (opt && opt.classes) || 'main-wrapper container-transparency',
 				alignTo: 'left',
-				bgColor: '#fff',
 				title: title,
 			}}
 		>

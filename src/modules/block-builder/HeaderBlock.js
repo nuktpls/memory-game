@@ -15,9 +15,10 @@ const HeaderBlock = ({ title, debug = false, logotipoImg }) => {
 			<Layout
 				type="HEADER"
 				opt={{
-					logoHeader: (
+					logoHeader: logotipoImg ? (
 						<Layout type="BLOCK_IMAGE" opt={{ queryCard: logotipoImg }} />
-					),
+					) : null,
+					mainMenu: false,
 				}}
 			/>
 		</MainWrapper>

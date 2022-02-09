@@ -12,7 +12,13 @@ const BodyContainer = ({ children, opt }) => {
 				<>
 					<SeoContainer title={opt.titleSeo} />
 
-					<Body opt={opt}>{children}</Body>
+					<Body
+						opt={opt}
+						bgImage={opt.bgImage}
+						customClasses={opt.customClasses}
+					>
+						{children}
+					</Body>
 				</>
 			)}
 		</GlobalContext.Consumer>

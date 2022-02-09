@@ -2,34 +2,34 @@
   "name": "jogo-da-memoria",
   "version": "1.0.1",
   "private": true,
-  "description": "O Jogo da Memória é um app desenvolvido pela ADJ - ASSOCIAÇÃO DE DIABETES JUVENIL.",
+  "description": "Divirta-se com o jogo da memória do multiverso RÖÖM.",
   "author": {
     "name": "miltonbolonha",
-    "email": "mbolonha@studiovisual.com.br"
+    "email": "miltonbolonha@gmail.com"
   },
   "coauthor": {
-    "name": "Studio Visual",
-    "email": "contato@studiovisual.com.br"
+    "name": "NÜktpls",
+    "email": "poupaluz@edu4.dev"
   },
-  "coauthordesc": "Agência Especializada em WordPress. Especialista em WordPress, Projetos Digitais, Soluções Web, Marketing Digital e Consultoria Digital.",
-  "repository": "https://github.com/studiovisual/diabetes-brasil-jogo-da-memoria",
+  "coauthordesc": "NÜktpls é o animal de tamanho colossal que deu origem ao universo onde se encontra a Terra de Ateco.",
+  "repository": "https://github.com/nuktpls/jogo-da-memoria",
   "urlPrefix": "/jogodamemoria",
-  "appName": "Jogo da Memória - ADJ - ASSOCIAÇÃO DE DIABETES JUVENIL",
+  "appName": "Jogo da Memória - Multiverso RÖÖM",
   "appLogic": "Jogo da Memória",
-  "siteUrl": "https://adj.org.br/jogodamemoria",
-  "clientOrg": "ADJ - ASSOCIAÇÃO DE DIABETES JUVENIL",
+  "siteUrl": "https://xxxxxx.org.br/jogodamemoria",
+  "clientOrg": "Multiverso RÖÖM",
   "clientShortName": "ADJ - Diabetes Brasil",
-  "clientSite": "https://adj.org.br/",
+  "clientSite": "https://xxxxxx.org.br/",
   "clientSocial": {
-    "instagram": "https://www.instagram.com/adjdiabetesbrasil/",
-    "facebook": "https://www.facebook.com/ADJDiabetesBrasil/",
-    "twitter": "https://twitter.com/ADJ_Diabetes_BR",
-    "youtube": "https://www.youtube.com/channel/UCj5rxMlBYLDiRSVdy2FprMA"
+    "instagram": "https://www.instagram.com/kikobolonha/",
+    "facebook": "https://www.facebook.com/MiltonBolonhaOficial/",
+    "twitter": "https://twitter.com/miltonbolonha",
+    "youtube": "https://www.youtube.com/channel/UCxl1Og51qXSGhUoIFueDvWw"
   },
-  "themeColor": "#eb412c",
+  "themeColor": "#fff600",
   "backgroundColor": "#fff",
   "displayManifest": "fullscreen",
-  "iconManifest": "diabetes-brasil-favicon.svg",
+  "iconManifest": "favicon-logo-eugenia-3-0.png",
   "importFont": {
     "font01": "Mulish",
     "font02": "Alegreya Sans:300,400,500,700,800,900",
@@ -99,9 +99,7 @@
     "resolve-path": "^1.4.0",
     "sass": "^1.43.4",
     "semver": "^7.3.5",
-    "terminal-kit": "^2.1.8",
-    "xterm-addon-web-links": "^0.4.0",
-    "xterm-for-react": "^1.0.4"
+    "terminal-kit": "^2.1.8"
   },
   "devDependencies": {
     "prettier": "^2.4.1",

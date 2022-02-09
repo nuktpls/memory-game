@@ -1,0 +1,78 @@
+name: Ambiente de testes - meudominio.intest.com.br
+on:
+  push:
+    branches:
+      - master
+env:
+  REGISTRY: 'registry.myserver.com/intest'
+  IMAGE_NAME: 'nuktpls-atomic-theme'
+
+jobs:
+  build:
+    name: Obtém o código-fonte e realiza a construção da aplicação.
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v2
+
+      - name: Set outputs
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+
+      - name: Check outputs
+        run: echo ${{ steps.vars.outputs.sha_short }}
+
+      - name: Construindo imagem do projeto
+        run: docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.sha_short }} .
+
+      - name: Instalando o CLI da DigitalOcean XXXXX
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.ENV_VAR }}
+
+      - name: Realizando login temporário no repositório de imagens
+        run: doctl registry login --expiry-seconds 600
+
+      - name: Envia a imagem para o repositório de imagens
+        run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.sha_short }}
+
+  release:
+    name: Acessa o servidor de testes e configura o container da aplicação
+    needs: build
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v2
+
+      - name: Set outputs
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+
+      - name: Check outputs
+        run: echo ${{ steps.vars.outputs.sha_short }}
+
+      - name: Verifica o status do container existente
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_DEV_DEPLOY_HOST }}
+          username: ${{ secrets.SSH_DEV_DEPLOY_USER }}
+          key: ${{ secrets.SSH_DEV_DEPLOY_KEY }}
+          port: 22
+          script: |
+            echo "Obtendo imagem atualizada do repositório"
+            docker login -u ${{ secrets.ENV_VAR }} -p ${{ secrets.ENV_VAR }} registry.myserver.com
+            docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.sha_short }}
+            docker logout registry.myserver.com
+            echo "Removendo container existente"
+            docker rm -f nuktpls-atomic-theme
+            echo "Criando novo container para a imagem ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.sha_short }}"
+            docker run -d -p 9000 \
+              --name="nuktpls-atomic-theme" \
+              --workdir="/app" \
+              --label "traefik.http.routers.nuktpls-atomic-theme.rule=Host(\`meudominio.intest.com.br\`)" \
+              --label "traefik.http.routers.nuktpls-atomic-theme.tls=true" \
+              --label "traefik.http.routers.nuktpls-atomic-theme.tls.certresolver=lets-encrypt" \
+              --label "traefik.http.services.nuktpls-atomic-theme.loadbalancer.server.port=9000" \
+              --network traefik_web \
+              --ip="000.00.0.00" \
+              "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.sha_short }}"
