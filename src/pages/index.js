@@ -44,12 +44,14 @@ const IndexPage = ({ data }) => {
 			/>
 			{/* <ButtonsMain title="Botões Main" /> */}
 			<MainWrapper>
-				<Link to="/alimentacao" className={`deus`}>
-					<Layout
-						type="BLOCK_IMAGE"
-						opt={{ queryCard: data.imagenzinha, classes: 'bgrepeat' }}
-					/>
-				</Link>
+				<Layout type="ROW" opt={{ alignTo: 'center', classes: 'main-btn' }}>
+					<Link to="/jogo-da-memoria">
+						<Layout
+							type="BLOCK_IMAGE"
+							opt={{ queryCard: data.imagenzinha, classes: 'btn-home-fix' }}
+						/>
+					</Link>
+				</Layout>
 			</MainWrapper>
 
 			<ShareButtons
@@ -195,12 +197,7 @@ export const queryAtividade = graphql`
 		}
 		imagenzinha: file(relativePath: { eq: "jogodamemoria-btn.png" }) {
 			childrenImageSharp {
-				gatsbyImageData(
-					layout: FIXED
-					height: 104
-					placeholder: NONE
-					quality: 100
-				)
+				gatsbyImageData(height: 104, placeholder: NONE, quality: 100)
 			}
 		}
 	}
