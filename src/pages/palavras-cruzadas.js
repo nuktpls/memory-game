@@ -1,5 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
+import Container from '@material-ui/core/Container'
+import { Dialog, DialogContent, DialogTitle } from '@material-ui/core'
+// import CloseButton from '../../../../static/images/close-button.svg'
+
 import MainWrapper from '../modules/block-builder/MainWrapper'
 import HeaderBlock from '../modules/block-builder/HeaderBlock'
 import FooterBlock from '../modules/block-builder/FooterBlock'
@@ -7,8 +11,43 @@ import PageHeader from '../modules/block-builder/PageHeader'
 import Layout from '../modules/layout'
 import Crossword from '@jaredreisinger/react-crossword'
 import { ThemeProvider } from '@jaredreisinger/react-crossword'
+import { Link } from 'gatsby'
+// import ArrowRightIcon from '../../../../static/images/icon-arrow-right.svg'
+import { AiOutlineLeft } from 'react-icons/ai'
+
+function DialogMigrate({
+	children,
+	disableBackdropClick,
+	disableEscapeKeyDown,
+	onClose,
+	...rest
+}) {
+	const handleClose = (event, reason) => {
+		if (disableBackdropClick && reason === 'backdropClick') {
+			return false
+		}
+
+		if (disableEscapeKeyDown && reason === 'escapeKeyDown') {
+			return false
+		}
+
+		if (typeof onClose === 'function') {
+			onClose()
+		}
+	}
+	return (
+		<Dialog onClose={handleClose} {...rest}>
+			{children}
+		</Dialog>
+	)
+}
 
 const PalavrasCruzadasPage = ({ data }) => {
+	const [showModal, setShowModal] = useState(false)
+	const [open, setOpen] = useState(true)
+	const handleRestart = () => {
+		setShowModal(false)
+	}
 	const dataCross = {
 		across: {
 			1: {
@@ -79,18 +118,14 @@ const PalavrasCruzadasPage = ({ data }) => {
 		highlightBackground: 'rgb(255,0,204)',
 	}
 
-	const sizeContext = {
-		cellSize,
-		cellPadding,
-		cellInner,
-		cellHalf,
-		fontSize,
-	}
-
 	function handleClick() {
 		alert('GOT CLICK!')
 	}
-
+	const stateShowModal = showModal ? 'block' : 'none'
+	useEffect(() => {
+		document.querySelector('.clues').style.display = stateShowModal
+		console.log(showModal)
+	})
 	return (
 		<Layout
 			type="BODY"
@@ -114,13 +149,26 @@ const PalavrasCruzadasPage = ({ data }) => {
 			<PageHeader
 				title="Page Header"
 				logotipoJogoMemoria={data.logotipoJogoMemoria}
-				paragraph="Lorem."
+				paragraph=""
 			/>
-			<MainWrapper opt={{ classes: 'zingsa' }}>
-				<ThemeProvider theme={themeContext}>
-					<Crossword data={dataCross} />
-				</ThemeProvider>
-				;
+			<MainWrapper>
+				<button onClick={() => setShowModal(!showModal)} className="tips-btn">
+					{showModal ? 'Fechar' : 'Abrir'} Dicas
+				</button>
+
+				<div
+					className="second-row-for-now"
+					style={{ position: 'absolute', marginTop: '-50px' }}
+				>
+					<Link className="circle-shadow" to="/">
+						<AiOutlineLeft />
+					</Link>
+				</div>
+				<div className="crossword-wrapper">
+					<ThemeProvider theme={themeContext}>
+						<Crossword data={dataCross} />
+					</ThemeProvider>
+				</div>
 			</MainWrapper>
 			<FooterBlock
 				title="Main Footer"
