@@ -52,54 +52,50 @@ const PalavrasCruzadasPage = ({ data }) => {
 		across: {
 			1: {
 				clue: 'Sobrenome da Família de XMatematxs',
-				answer: 'Vagabundo',
+				answer: 'VAGABUNDO',
 				row: 1,
 				col: 0,
 			},
-			2: { clue: 'Versão atual da Eugenia', answer: '3.0', row: 9, col: 0 },
+			2: {
+				clue: 'A primeira letra do algoritmo sagrado',
+				answer: 'NÜ',
+				row: 6,
+				col: 4,
+			},
 			3: {
-				clue: 'Primeiro nome do bonde',
-				answer: 'Esquadrão',
-				row: 0,
-				col: 3,
-			},
-			4: { clue: 'Ela também é a Ninja da Luz', answer: 'Lua', row: 5, col: 5 },
-			5: {
-				clue: 'As novas consciências pré-definidas',
-				answer: 'CriançasCTOs',
+				clue: 'Ela também é a Ninja da Luz',
+				answer: 'LUA',
 				row: 10,
-				col: 0,
+				col: 8,
 			},
-			6: { clue: 'O Planeta B faz parte', answer: 'RGB', row: 11, col: 0 },
-			7: { clue: 'O Planeta K faz parte', answer: 'CMYK', row: 11, col: 4 },
+			4: { clue: 'O Planeta B faz parte', answer: 'RGB', row: 9, col: 0 },
 		},
 		down: {
 			1: {
 				clue: "A primeira Deusa dos @'s",
-				answer: '@goshDev',
+				answer: '@GOSHDEV',
 				row: 0,
 				col: 2,
 			},
-			2: { clue: 'Irmão do protagonista', answer: 'Menor', row: 2, col: 8 },
+			2: { clue: 'Irmão do protagonista', answer: 'MENOR', row: 5, col: 0 },
 			3: {
-				clue: 'Personagem com multiplos gêneros',
-				answer: 'XMatematxs',
-				row: 1,
-				col: 11,
-			},
-			4: {
 				clue: 'Chefe da Família militar',
-				answer: 'BoiSonoro',
+				answer: 'BOISONORO',
 				row: 1,
 				col: 4,
 			},
-			5: {
+			4: {
 				clue: 'Chefe da Família governante',
-				answer: 'Ditadora',
+				answer: 'DITADORA',
 				row: 2,
 				col: 7,
 			},
-			6: { clue: 'Sobrenome da Presidenta', answer: 'Facista', row: 0, col: 1 },
+			5: {
+				clue: 'Sobrenome da Presidenta',
+				answer: 'FACISTA',
+				row: 4,
+				col: 10,
+			},
 		},
 	}
 	// as calculated in Crossword...
@@ -113,7 +109,7 @@ const PalavrasCruzadasPage = ({ data }) => {
 		cellBackground: 'rgba(20,20,20)',
 		cellBorder: 'rgb(0,255,255)',
 		textColor: 'rgb(255,255,255)',
-		numberColor: 'rgba(0,0,0, 0.25)',
+		numberColor: 'rgba(255,0,204, 1)',
 		focusBackground: 'rgb(0,155,255)',
 		highlightBackground: 'rgb(255,0,204)',
 	}

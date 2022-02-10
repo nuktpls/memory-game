@@ -51,7 +51,7 @@ const IndexPage = ({ data }) => {
 							opt={{ queryCard: data.imagenzinha, classes: 'btn-home-fix' }}
 						/>
 					</Link>
-					<Link to="/jogo-da-memoria">
+					<Link to="/palavras-cruzadas">
 						<Layout
 							type="BLOCK_IMAGE"
 							opt={{ queryCard: data.palavracruzada, classes: 'btn-home-fix' }}
