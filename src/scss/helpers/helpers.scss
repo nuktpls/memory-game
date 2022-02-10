@@ -427,7 +427,7 @@
 	display: flex;
 	min-width: 270px;
 	align-items: center;
-	margin-top: 18px;
+	margin: 18px auto;
 	max-width: 560px;
 	align-items: baseline;
 	span {
@@ -749,6 +749,7 @@ a {
 
 .btn-home-fix {
 	text-align: center;
+	margin: 10px auto;
 }
 
 

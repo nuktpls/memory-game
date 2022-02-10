@@ -51,6 +51,12 @@ const IndexPage = ({ data }) => {
 							opt={{ queryCard: data.imagenzinha, classes: 'btn-home-fix' }}
 						/>
 					</Link>
+					<Link to="/jogo-da-memoria">
+						<Layout
+							type="BLOCK_IMAGE"
+							opt={{ queryCard: data.palavracruzada, classes: 'btn-home-fix' }}
+						/>
+					</Link>
 				</Layout>
 			</MainWrapper>
 
@@ -101,89 +107,54 @@ export const queryAtividade = graphql`
 
 		bgroom: file(relativePath: { eq: "bg-app-room.jpg" }) {
 			childrenImageSharp {
-				gatsbyImageData(
-					layout: FIXED
-					width: 301
-					placeholder: NONE
-					quality: 100
-				)
+				gatsbyImageData(width: 301, placeholder: NONE, quality: 100)
 			}
 		}
 		logotipoJogoMemoria: file(relativePath: { eq: "logo-eugenia-3-0.png" }) {
 			childrenImageSharp {
-				gatsbyImageData(
-					layout: FIXED
-					width: 224
-					placeholder: NONE
-					quality: 100
-				)
+				gatsbyImageData(width: 224, placeholder: NONE, quality: 100)
 			}
 		}
 		astrazeneca: file(
 			relativePath: { eq: "astrazeneca-diabetes-logotipo.png" }
 		) {
 			childrenImageSharp {
-				gatsbyImageData(layout: FIXED, height: 50, placeholder: NONE)
+				gatsbyImageData(height: 50, placeholder: NONE)
 			}
 		}
 		bayer: file(relativePath: { eq: "bayer-logotipo.png" }) {
 			childrenImageSharp {
-				gatsbyImageData(layout: FIXED, height: 40, placeholder: NONE)
+				gatsbyImageData(height: 40, placeholder: NONE)
 			}
 		}
 		bd: file(relativePath: { eq: "bd-logotipo.png" }) {
 			childrenImageSharp {
-				gatsbyImageData(layout: FIXED, height: 50, placeholder: NONE)
+				gatsbyImageData(height: 50, placeholder: NONE)
 			}
 		}
 		boehringer: file(relativePath: { eq: "boehringer-logotipo.jpg" }) {
 			childrenImageSharp {
-				gatsbyImageData(
-					layout: FIXED
-					height: 90
-					placeholder: NONE
-					quality: 100
-				)
+				gatsbyImageData(height: 90, placeholder: NONE, quality: 100)
 			}
 		}
 		novartis: file(relativePath: { eq: "novartis-logotipo.jpg" }) {
 			childrenImageSharp {
-				gatsbyImageData(
-					layout: FIXED
-					height: 20
-					placeholder: NONE
-					quality: 100
-				)
+				gatsbyImageData(height: 20, placeholder: NONE, quality: 100)
 			}
 		}
 		nordisk: file(relativePath: { eq: "novo-nordisk-logotipo.jpg" }) {
 			childrenImageSharp {
-				gatsbyImageData(
-					layout: FIXED
-					height: 45
-					placeholder: NONE
-					quality: 100
-				)
+				gatsbyImageData(height: 45, placeholder: NONE, quality: 100)
 			}
 		}
 		roche: file(relativePath: { eq: "roche-logotipo.jpg" }) {
 			childrenImageSharp {
-				gatsbyImageData(
-					layout: FIXED
-					height: 35
-					placeholder: NONE
-					quality: 100
-				)
+				gatsbyImageData(height: 35, placeholder: NONE, quality: 100)
 			}
 		}
 		sanofi: file(relativePath: { eq: "sanofi-logotipo.jpg" }) {
 			childrenImageSharp {
-				gatsbyImageData(
-					layout: FIXED
-					height: 55
-					placeholder: NONE
-					quality: 100
-				)
+				gatsbyImageData(height: 55, placeholder: NONE, quality: 100)
 				fluid {
 					base64
 					src
@@ -196,6 +167,12 @@ export const queryAtividade = graphql`
 			}
 		}
 		imagenzinha: file(relativePath: { eq: "jogodamemoria-btn.png" }) {
+			childrenImageSharp {
+				gatsbyImageData(height: 104, placeholder: NONE, quality: 100)
+			}
+		}
+
+		palavracruzada: file(relativePath: { eq: "palavrascruzadas-btn.png" }) {
 			childrenImageSharp {
 				gatsbyImageData(height: 104, placeholder: NONE, quality: 100)
 			}
