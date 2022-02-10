@@ -62,13 +62,7 @@ const PalavrasCruzadasPage = ({ data }) => {
 				row: 6,
 				col: 4,
 			},
-			3: {
-				clue: 'Ela também é a Ninja da Luz',
-				answer: 'LUA',
-				row: 9,
-				col: 8,
-			},
-			4: { clue: 'O Planeta B faz parte', answer: 'RGB', row: 9, col: 0 },
+			3: { clue: 'Irmão do protagonista', answer: 'MENOR', row: 9, col: 1 },
 		},
 		down: {
 			1: {
@@ -77,24 +71,17 @@ const PalavrasCruzadasPage = ({ data }) => {
 				row: 0,
 				col: 2,
 			},
-			2: { clue: 'Irmão do protagonista', answer: 'MENOR', row: 5, col: 0 },
-			3: {
+			2: {
 				clue: 'Chefe da Família militar',
 				answer: 'BOISONORO',
 				row: 1,
 				col: 4,
 			},
-			4: {
+			3: {
 				clue: 'Chefe da Família governante',
 				answer: 'DITADORA',
 				row: 1,
 				col: 7,
-			},
-			5: {
-				clue: 'Sobrenome da Presidenta',
-				answer: 'FACISTA',
-				row: 3,
-				col: 10,
 			},
 		},
 	}
@@ -109,7 +96,7 @@ const PalavrasCruzadasPage = ({ data }) => {
 		cellBackground: 'rgba(20,20,20)',
 		cellBorder: 'rgb(0,255,255)',
 		textColor: 'rgb(255,255,255)',
-		numberColor: 'rgba(255,0,204, 1)',
+		numberColor: 'rgba(255,255,255, 1)',
 		focusBackground: 'rgb(0,155,255)',
 		highlightBackground: 'rgb(255,0,204)',
 	}
