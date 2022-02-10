@@ -802,6 +802,7 @@ a {
 
 }
 .direction .clue{
+	cursor: pointer;
 	color: #13ff9e;
 	border-radius: 3px;
 	font-weight: bold;
@@ -833,6 +834,16 @@ a {
 
 
 .tips-btn{
-	border:0;
-	background-color: yellow;
+	border: 0;
+    background-color: #ffed00;
+    position: absolute;
+    margin: -55px auto 0;
+    right: 0;
+    left: 0;
+    width: 150px;
+    height: 33px;
+    border-radius: 3px;
+    font-weight: bolder;
+		z-index: 9;
+		cursor: pointer;
 }
