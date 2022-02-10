@@ -65,7 +65,7 @@ const PalavrasCruzadasPage = ({ data }) => {
 			3: {
 				clue: 'Ela também é a Ninja da Luz',
 				answer: 'LUA',
-				row: 10,
+				row: 9,
 				col: 8,
 			},
 			4: { clue: 'O Planeta B faz parte', answer: 'RGB', row: 9, col: 0 },
@@ -87,13 +87,13 @@ const PalavrasCruzadasPage = ({ data }) => {
 			4: {
 				clue: 'Chefe da Família governante',
 				answer: 'DITADORA',
-				row: 2,
+				row: 1,
 				col: 7,
 			},
 			5: {
 				clue: 'Sobrenome da Presidenta',
 				answer: 'FACISTA',
-				row: 4,
+				row: 3,
 				col: 10,
 			},
 		},
