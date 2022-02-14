@@ -4,7 +4,7 @@ const MainMenu = ({ wrapperRef, isVisibleClass }) => (
 	<nav ref={wrapperRef} className={' main-nav menu-state-' + isVisibleClass}>
 		<ul className="nav-menus">
 			<li className="nav-links">
-				<a className="nav-main-link" href="https://adj.org.br/">
+				<a className="nav-main-link" href="https://google.com/">
 					Ir Para <br className="desktop-only" />o Site
 				</a>
 			</li>
@@ -12,7 +12,7 @@ const MainMenu = ({ wrapperRef, isVisibleClass }) => (
 
 		<ul className="nav-menus">
 			<li className="nav-links">
-				<a className="nav-main-link" href="https://adj.org.br/quem-somos/">
+				<a className="nav-main-link" href="https://google.com/quem-somos/">
 					Quem Somos
 				</a>
 			</li>
@@ -20,14 +20,14 @@ const MainMenu = ({ wrapperRef, isVisibleClass }) => (
 
 		<ul className="nav-menus">
 			<li className="nav-links">
-				<a className="nav-main-link" href="https://adj.org.br/viver-bem/">
+				<a className="nav-main-link" href="https://google.com/viver-bem/">
 					Viver Bem
 				</a>
 			</li>
 		</ul>
 		<ul className="nav-menus">
 			<li className="nav-links">
-				<a className="nav-main-link" href="https://adj.org.br/fique-ligado/">
+				<a className="nav-main-link" href="https://google.com/fique-ligado/">
 					Fique Ligado
 				</a>
 			</li>
@@ -36,7 +36,7 @@ const MainMenu = ({ wrapperRef, isVisibleClass }) => (
 			<li className="nav-links">
 				<a
 					className="nav-main-link"
-					href="https://adj.org.br/profissional-e-gestor-de-saude/"
+					href="https://google.com/profissional-e-gestor-de-saude/"
 				>
 					Profissional e Gestor
 				</a>
@@ -44,14 +44,14 @@ const MainMenu = ({ wrapperRef, isVisibleClass }) => (
 		</ul>
 		<ul className="nav-menus">
 			<li className="nav-links">
-				<a className="nav-main-link" href="https://adj.org.br/faca-parte/">
+				<a className="nav-main-link" href="https://google.com/faca-parte/">
 					Faça Parte
 				</a>
 			</li>
 		</ul>
 		<ul className="nav-menus">
 			<li className="nav-links">
-				<a className="nav-main-link" href="https://adj.org.br/em-dia/">
+				<a className="nav-main-link" href="https://google.com/em-dia/">
 					Em Dia
 				</a>
 			</li>
@@ -60,7 +60,7 @@ const MainMenu = ({ wrapperRef, isVisibleClass }) => (
 			<li className="nav-links">
 				<a
 					className="nav-main-link"
-					href="https://adj.org.br/faca-parte/faca-sua-doacao/"
+					href="https://google.com/faca-parte/faca-sua-doacao/"
 				>
 					Doações
 				</a>
@@ -68,7 +68,7 @@ const MainMenu = ({ wrapperRef, isVisibleClass }) => (
 		</ul>
 		<ul className="nav-menus">
 			<li className="nav-links">
-				<a className="nav-main-link" href="https://adj.org.br/contatos/">
+				<a className="nav-main-link" href="https://google.com/contatos/">
 					Contatos
 				</a>
 			</li>

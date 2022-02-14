@@ -12,7 +12,7 @@ module.exports = {
 		description: businessInfos.description,
 		author: businessInfos.author,
 		siteUrl: businessInfos.siteUrl,
-		image: `${__dirname}/static/images/diabetes-brasil-logo.png`,
+		image: `${__dirname}/static/images/logo-eugenia-3-0.png`,
 		coauthor: {
 			name: businessInfos.coauthor,
 			minibio: businessInfos.coauthordesc,
@@ -20,7 +20,7 @@ module.exports = {
 		organization: {
 			name: businessInfos.clientOrg,
 			url: businessInfos.clientSite,
-			logo: `${__dirname}/static/images/diabetes-brasil-logo.png`,
+			logo: `${__dirname}/static/images/logo-eugenia-3-0.png`,
 		},
 		social: {
 			instagram: businessInfos.clientSocial.instagram,
@@ -98,6 +98,16 @@ module.exports = {
 					businessInfos.importFont.font03,
 				],
 				display: 'swap',
+			},
+		},
+		{
+			resolve: `gatsby-plugin-netlify`,
+			options: {
+				mergeSecurityHeaders: true, // boolean to turn off the default security headers
+				mergeLinkHeaders: true, // boolean to turn off the default gatsby js headers
+				mergeCachingHeaders: true, // boolean to turn off the default caching headers
+				transformHeaders: (headers, path) => headers, // optional transform for manipulating headers under each path (e.g.sorting), etc.
+				generateMatchPathRewrites: true, // boolean to turn off automatic creation of redirect rules for client only paths
 			},
 		},
 	],
