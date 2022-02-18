@@ -1,19 +1,22 @@
 import React, { useState } from 'react'
-import NoNameComponent from '../nu_modules'
-import { graphql, Link } from 'gatsby'
-import AudioPlayer from 'react-h5-audio-player'
-import 'react-h5-audio-player/lib/styles.css'
+// import NoNameComponent from '../nu_modules'
 
-import { BiShoppingBag } from 'react-icons/bi'
-import { CgReadme } from 'react-icons/cg'
-import { GiBurningBook, GiPunchBlast, GiGamepadCross } from 'react-icons/gi'
-import { RiContactsBookFill } from 'react-icons/ri'
-import { BsBookmarkCheck } from 'react-icons/bs'
-import { GoBook } from 'react-icons/go'
+import { graphql, Link } from 'gatsby'
+
+import Player from '../modules/block-builder/AudioPlayer'
+// import AudioPlayer from 'react-h5-audio-player'
+// import 'react-h5-audio-player/lib/styles.css'
+
+// import { BiShoppingBag } from 'react-icons/bi'
+// import { CgReadme } from 'react-icons/cg'
+// import { GiBurningBook, GiPunchBlast, GiGamepadCross } from 'react-icons/gi'
+// import { RiContactsBookFill } from 'react-icons/ri'
+// import { BsBookmarkCheck } from 'react-icons/bs'
+// import { GoBook } from 'react-icons/go'
 import Layout from '../modules/layout'
 import HeaderBlock from '../modules/block-builder/HeaderBlock'
 import PageHeader from '../modules/block-builder/PageHeader'
-import ButtonsMain from '../modules/block-builder/ButtonsMain'
+// import ButtonsMain from '../modules/block-builder/ButtonsMain'
 import FooterBlock from '../modules/block-builder/FooterBlock'
 // import ReactCarousel from '../modules/block-builder/ReactCarousel'
 import ShareButtons from '../modules/block-builder/ShareButtons'
@@ -23,30 +26,67 @@ const IndexPage = ({ data }) => {
 	const [playingNow, setPlayingNow] = useState(0)
 	const playlist = [
 		{
-			name: 'Zumba',
-			src: data.musicCto.publicURL,
+			name: 'Agora Está Tudo Bem',
+			src: data.musicOne.publicURL,
 		},
 		{
-			name: '自由女神',
-			src: 'https://hanzluo.s3-us-west-1.amazonaws.com/music/ziyounvshen.mp3',
+			name: "As Crianças CTO's",
+			src: data.musicTwo.publicURL,
 		},
 		{
-			name: 'sss',
-			src: 'https://hanzluo.s3-us-west-1.amazonaws.com/music/ziyounvshen.mp3',
+			name: 'Corre No Peito',
+			src: data.musicThree.publicURL,
+		},
+		{
+			name: 'Geração 87',
+			src: data.musicFour.publicURL,
+		},
+		{
+			name: 'Herói Vagabundo',
+			src: data.musicFive.publicURL,
+		},
+		{
+			name: 'Menor  Vagabundo',
+			src: data.musicSix.publicURL,
+		},
+		{
+			name: 'O Sangue',
+			src: data.musicSeven.publicURL,
+		},
+		{
+			name: 'Pagode do Esquadrão',
+			src: data.musicEight.publicURL,
+		},
+		{
+			name: 'Quando Perdi As Lágrimas',
+			src: data.musicNine.publicURL,
+		},
+		{
+			name: 'Que Dia Ruim!',
+			src: data.musicTen.publicURL,
+		},
+		{
+			name: 'Rugido do Mar',
+			src: data.musicEleven.publicURL,
+		},
+		{
+			name: 'Show do Esquadrão',
+			src: data.musicTwelve.publicURL,
 		},
 	]
+
 	function changePlayingNow(param) {
 		setPlayingNow(param)
 	}
 	const handleClickPrevious = (params) => {
 		changePlayingNow(playingNow === 0 ? playlist.length - 1 : playingNow - 1)
+		// console.log(playingNow)
 	}
 	const handleClickNext = (params) => {
 		changePlayingNow(playingNow < playlist.length - 1 ? playingNow + 1 : 0)
+		// console.log(playingNow)
 	}
-	console.log(
-		data.bgroom.childrenImageSharp[0].gatsbyImageData.images.fallback.srcSet
-	)
+
 	return (
 		<Layout
 			type="BODY"
@@ -67,7 +107,6 @@ const IndexPage = ({ data }) => {
 			/>
 			{/* <ButtonsMain title="Botões Main" /> */}
 			<MainWrapper>
-				{/* autoPlayAfterSrcChange={true} */}
 				<Layout type="ROW" opt={{ alignTo: 'center', classes: 'main-btn' }}>
 					<Link to="/jogo-da-memoria">
 						<Layout
@@ -136,17 +175,19 @@ videos
 abertra
  */}
 			<Layout type="ROW" opt={{ isBoxed: true, classes: 'audioplayer' }}>
-				<AudioPlayer
+				<Player playlist={playlist} />
+				{/* <AudioPlayer
 					autoPlay
 					// src={playlist[playingNow].src}
-					src={data.musicCto.publicURL}
+					src={playlist[playingNow].src}
 					// onPlay={(e) => console.log('onPlay')}
 					showSkipControls={true}
 					showJumpControls={false}
 					onClickPrevious={handleClickPrevious}
+					autoPlayAfterSrcChange={true}
 					onClickNext={handleClickNext}
 					layout="horizontal-reverse"
-				/>
+				/> */}
 			</Layout>
 		</Layout>
 	)
@@ -193,7 +234,51 @@ export const queryAtividade = graphql`
 			}
 		}
 
-		musicCto: file(relativePath: { eq: "algo-reduzido.mp3" }) {
+		musicOne: file(relativePath: { eq: "agora-esta-tudo-bem.mp3" }) {
+			publicURL
+		}
+
+		musicTwo: file(relativePath: { eq: "as-criancas-ctos.mp3" }) {
+			publicURL
+		}
+
+		musicThree: file(relativePath: { eq: "corre-peito.mp3" }) {
+			publicURL
+		}
+
+		musicFour: file(relativePath: { eq: "geracao-87.mp3" }) {
+			publicURL
+		}
+
+		musicFive: file(relativePath: { eq: "heroi-vagabundo.mp3" }) {
+			publicURL
+		}
+
+		musicSix: file(relativePath: { eq: "menor-vagabundo.mp3" }) {
+			publicURL
+		}
+
+		musicSeven: file(relativePath: { eq: "o-sangue.mp3" }) {
+			publicURL
+		}
+
+		musicEight: file(relativePath: { eq: "pagode-esquadrao.mp3" }) {
+			publicURL
+		}
+
+		musicNine: file(relativePath: { eq: "quando-perdi-lagrimas.mp3" }) {
+			publicURL
+		}
+
+		musicTen: file(relativePath: { eq: "que-dia-ruim.mp3" }) {
+			publicURL
+		}
+
+		musicEleven: file(relativePath: { eq: "rugido-mar.mp3" }) {
+			publicURL
+		}
+
+		musicTwelve: file(relativePath: { eq: "show-esquadrao.mp3" }) {
 			publicURL
 		}
 	}

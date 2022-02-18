@@ -853,19 +853,33 @@ a {
 		cursor: pointer;
 }
 
-.post-footer-btns{
+.post-footer-btns .boxed-column-child{
 	margin-top: -20px;
     z-index: 0;
+		box-shadow: inset 0em 0em 40px 12px #0c80bd;
 		svg{
-			font-size: 28px;
-			color:white;
-			fill: blue;
+			font-size: 35px;
+			margin-bottom: 5px;
+
+    color: #ffeb3b;
+    fill: #ffeb3b;
 		}
 		ul{
 			display: flex;
 			min-height: 103px;
 			align-items: center;
 			justify-content: space-around;
+			a{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				color: white;
+				font-weight: 900;
+				text-transform: uppercase;
+				margin-top: 20px;
+				font-family: 'Mulish';
+				text-shadow: 2px 2px 0 rgb(0 0 0 / 10%);
+			}
 		}
 }
 

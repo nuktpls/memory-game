@@ -42,7 +42,7 @@ const FooterBlock = ({ social }) => {
 				type="ROW"
 				opt={{
 					isBoxed: true,
-					bgColor: '#f03030',
+					bgColor: '#03a9f4',
 					classes: 'post-footer-btns',
 				}}
 			>
