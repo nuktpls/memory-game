@@ -2,7 +2,6 @@ import React from 'react'
 import Layout from '../layout'
 import { graphql, Link } from 'gatsby'
 import Player from './AudioPlayer'
-
 import { BiShoppingBag } from 'react-icons/bi'
 import { CgReadme } from 'react-icons/cg'
 import { GiBurningBook, GiPunchBlast, GiGamepadCross } from 'react-icons/gi'
@@ -85,18 +84,6 @@ const FooterBlock = ({ social }) => {
 			</Layout>
 			<Layout type="ROW" opt={{ isBoxed: true, classes: 'audioplayer' }}>
 				<Player />
-				{/* <AudioPlayer
-					autoPlay
-					// src={playlist[playingNow].src}
-					src={playlist[playingNow].src}
-					// onPlay={(e) => console.log('onPlay')}
-					showSkipControls={true}
-					showJumpControls={false}
-					onClickPrevious={handleClickPrevious}
-					autoPlayAfterSrcChange={true}
-					onClickNext={handleClickNext}
-					layout="horizontal-reverse"
-				/> */}
 			</Layout>
 		</>
 	)

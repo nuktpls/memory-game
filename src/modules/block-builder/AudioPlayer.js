@@ -3,176 +3,70 @@ import AudioPlayer from 'react-h5-audio-player'
 import 'react-h5-audio-player/lib/styles.css'
 import { usePlaylistQuery } from './configs/playlistQueryConfig'
 
-// const playlist = [
-// 	{
-// 		name: 'Agora Está Tudo Bem',
-// 		src: data.musicOne.publicURL,
-// 	},
-// 	{
-// 		name: "As Crianças CTO's",
-// 		src: data.musicTwo.publicURL,
-// 	},
-// 	{
-// 		name: 'Corre No Peito',
-// 		src: data.musicThree.publicURL,
-// 	},
-// 	{
-// 		name: 'Geração 87',
-// 		src: data.musicFour.publicURL,
-// 	},
-// 	{
-// 		name: 'Herói Vagabundo',
-// 		src: data.musicFive.publicURL,
-// 	},
-// 	{
-// 		name: 'Menor  Vagabundo',
-// 		src: data.musicSix.publicURL,
-// 	},
-// 	{
-// 		name: 'O Sangue',
-// 		src: data.musicSeven.publicURL,
-// 	},
-// 	{
-// 		name: 'Pagode do Esquadrão',
-// 		src: data.musicEight.publicURL,
-// 	},
-// 	{
-// 		name: 'Quando Perdi As Lágrimas',
-// 		src: data.musicNine.publicURL,
-// 	},
-// 	{
-// 		name: 'Que Dia Ruim!',
-// 		src: data.musicTen.publicURL,
-// 	},
-// 	{
-// 		name: 'Rugido do Mar',
-// 		src: data.musicEleven.publicURL,
-// 	},
-// 	{
-// 		name: 'Show do Esquadrão',
-// 		src: data.musicTwelve.publicURL,
-// 	},
-// ]
-
 const Player = ({}) => {
 	const [playingNow, setPlayingNow] = useState(0)
+	const [listen, setListen] = useState(false)
+	const [time, setTime] = useState(0)
 	const playlistQuery = usePlaylistQuery()
 	const playlist = playlistQuery.allFile.edges
-	// console.log(playlist.allFile.edges)
-
 	function changePlayingNow(param) {
 		setPlayingNow(param)
 	}
+	function changeListen(param) {
+		setListen(param)
+	}
+
+	function changeTime(param) {
+		setTime(param)
+	}
 	const handleClickPrevious = () => {
 		changePlayingNow(playingNow === 0 ? playlist.length - 1 : playingNow - 1)
-		console.log(playingNow)
 	}
 	const handleClickNext = () => {
 		changePlayingNow(playingNow < playlist.length - 1 ? playingNow + 1 : 0)
-		console.log(playingNow)
 	}
-	console.log(playlist[playingNow].node)
+	const handleListenChange = (e, param) => {
+		if (param === 'listen') {
+			changeListen(true)
+		}
+		if (param === 'pause') {
+			changeListen(false)
+		}
 
+		if (param === 'ended') {
+			const x = playingNow < playlist.length - 1 ? playingNow + 1 : 0
+			const src = playlist[x].node.publicURL
+		}
+		changeTime(time + 1)
+		console.log('e::: ')
+		console.log(e)
+	}
+	console.log(time)
 	return (
 		<AudioPlayer
-			autoPlay
-			// src={playlist[playingNow].src}
+			// autoPlay
+			// autoPlayAfterSrcChange={true}
+			metadata="metadata"
+			listenInterval={(e) => handleListenChange('listenInterval')}
+			onListen={(e) => handleListenChange('listen')}
+			onPause={(e) => handleListenChange('pause')}
+			onPlaying={(e) => handleListenChange('onPlaying')}
+			onEnded={handleClickNext}
+			onSeeking={(e) => console.log('onSeeking')}
+			onSeeked={(e) => console.log('onSeeked')}
+			onSuspend={(e) => console.log('On Suspend')}
+			onPlayError={(e) => console.log('onPlayError')}
+			onChangeCurrentTimeError={(e) => console.log('onChangeCurrentTimeError')}
+			onPlay={(e) => console.log(e)}
 			src={playlist[playingNow].node.publicURL}
-			// onPlay={(e) => console.log('onPlay')}
+			onClickPrevious={handleClickPrevious}
+			onClickNext={handleClickNext}
 			showSkipControls={true}
 			showJumpControls={false}
-			onClickPrevious={handleClickPrevious}
 			autoPlayAfterSrcChange={true}
-			onClickNext={handleClickNext}
 			layout="horizontal-reverse"
 		/>
 	)
 }
 
 export default Player
-
-// const playlist = [
-// 	{
-// 		name: 'Agora Está Tudo Bem',
-// 		src: data.musicOne.publicURL,
-// 	},
-// 	{
-// 		name: "As Crianças CTO's",
-// 		src: data.musicTwo.publicURL,
-// 	},
-// 	{
-// 		name: 'Corre No Peito',
-// 		src: data.musicThree.publicURL,
-// 	},
-// 	{
-// 		name: 'Geração 87',
-// 		src: data.musicFour.publicURL,
-// 	},
-// 	{
-// 		name: 'Herói Vagabundo',
-// 		src: data.musicFive.publicURL,
-// 	},
-// 	{
-// 		name: 'Menor  Vagabundo',
-// 		src: data.musicSix.publicURL,
-// 	},
-// 	{
-// 		name: 'O Sangue',
-// 		src: data.musicSeven.publicURL,
-// 	},
-// 	{
-// 		name: 'Pagode do Esquadrão',
-// 		src: data.musicEight.publicURL,
-// 	},
-// 	{
-// 		name: 'Quando Perdi As Lágrimas',
-// 		src: data.musicNine.publicURL,
-// 	},
-// 	{
-// 		name: 'Que Dia Ruim!',
-// 		src: data.musicTen.publicURL,
-// 	},
-// 	{
-// 		name: 'Rugido do Mar',
-// 		src: data.musicEleven.publicURL,
-// 	},
-// 	{
-// 		name: 'Show do Esquadrão',
-// 		src: data.musicTwelve.publicURL,
-// 	},
-// ]
-
-// const Player = ({}) => {
-// 	returnconsole.log(usePlaylistQuery)
-
-// 	const [playingNow, setPlayingNow] = useState(0)
-
-// 	function changePlayingNow(param) {
-// 		setPlayingNow(param)
-// 	}
-// 	const handleClickPrevious = () => {
-// 		changePlayingNow(playingNow === 0 ? playlist.length - 1 : playingNow - 1)
-// 		// console.log(playingNow)
-// 	}
-// 	const handleClickNext = () => {
-// 		changePlayingNow(playingNow < playlist.length - 1 ? playingNow + 1 : 0)
-// 		// console.log(playingNow)
-// 	}
-
-// 	return (
-// 		<AudioPlayer
-// 			autoPlay
-// 			// src={playlist[playingNow].src}
-// 			// src={playlist[playingNow].src}
-// 			// onPlay={(e) => console.log('onPlay')}
-// 			showSkipControls={true}
-// 			showJumpControls={false}
-// 			onClickPrevious={handleClickPrevious}
-// 			autoPlayAfterSrcChange={true}
-// 			onClickNext={handleClickNext}
-// 			layout="horizontal-reverse"
-// 		/>
-// 	)
-// }
-
-// export default Player
