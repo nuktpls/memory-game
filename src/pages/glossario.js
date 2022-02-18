@@ -1,11 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import NoNameComponent from '../nu_modules'
 import { graphql, Link } from 'gatsby'
-import AudioPlayer from 'react-h5-audio-player'
-import 'react-h5-audio-player/lib/styles.css'
-
-import { BiShoppingBag } from 'react-icons/bi'
-import { CgReadme } from 'react-icons/cg'
 import { GiBurningBook, GiPunchBlast, GiGamepadCross } from 'react-icons/gi'
 import { RiContactsBookFill } from 'react-icons/ri'
 import { BsBookmarkCheck } from 'react-icons/bs'
@@ -20,30 +15,6 @@ import ShareButtons from '../modules/block-builder/ShareButtons'
 import MainWrapper from '../modules/block-builder/MainWrapper'
 
 const IndexPage = ({ data }) => {
-	const [playingNow, setPlayingNow] = useState(0)
-	const playlist = [
-		{
-			name: 'Zumba',
-			src: data.musicCto.publicURL,
-		},
-		{
-			name: '自由女神',
-			src: 'https://hanzluo.s3-us-west-1.amazonaws.com/music/ziyounvshen.mp3',
-		},
-		{
-			name: 'sss',
-			src: 'https://hanzluo.s3-us-west-1.amazonaws.com/music/ziyounvshen.mp3',
-		},
-	]
-	function changePlayingNow(param) {
-		setPlayingNow(param)
-	}
-	const handleClickPrevious = (params) => {
-		changePlayingNow(playingNow === 0 ? playlist.length - 1 : playingNow - 1)
-	}
-	const handleClickNext = (params) => {
-		changePlayingNow(playingNow < playlist.length - 1 ? playingNow + 1 : 0)
-	}
 	console.log(
 		data.bgroom.childrenImageSharp[0].gatsbyImageData.images.fallback.srcSet
 	)
@@ -56,6 +27,16 @@ const IndexPage = ({ data }) => {
 					data.bgroom.childrenImageSharp[0].gatsbyImageData.images.fallback,
 			}}
 		>
+			{/* <div
+				style={{
+					backgroundImage: `url(${data.bgroom.childrenImageSharp[0].gatsbyImageData.images.fallback.src})`,
+				}}
+
+			>
+				<h1>Ziniga.</h1>
+			</div> */}
+
+			{/* <NoNameComponent /> */}
 			<HeaderBlock
 				title="header-block"
 				// logotipoImg={data.logotipoImg}
@@ -67,7 +48,6 @@ const IndexPage = ({ data }) => {
 			/>
 			{/* <ButtonsMain title="Botões Main" /> */}
 			<MainWrapper>
-				{/* autoPlayAfterSrcChange={true} */}
 				<Layout type="ROW" opt={{ alignTo: 'center', classes: 'main-btn' }}>
 					<Link to="/jogo-da-memoria">
 						<Layout
@@ -117,37 +97,6 @@ const IndexPage = ({ data }) => {
 					youtube: data.site.siteMetadata.social.youtube,
 				}}
 			/>
-			{/* <NoNameComponent /> */}
-
-			{/*
-				blog posts
-infographics
-videos
-social media posts
-Subscription
-
-Sponsorship
-Partnership
-
-Advertising
-In-app purchase
-audiobook
-videos
-abertra
- */}
-			<Layout type="ROW" opt={{ isBoxed: true, classes: 'audioplayer' }}>
-				<AudioPlayer
-					autoPlay
-					// src={playlist[playingNow].src}
-					src={data.musicCto.publicURL}
-					// onPlay={(e) => console.log('onPlay')}
-					showSkipControls={true}
-					showJumpControls={false}
-					onClickPrevious={handleClickPrevious}
-					onClickNext={handleClickNext}
-					layout="horizontal-reverse"
-				/>
-			</Layout>
 		</Layout>
 	)
 }
@@ -174,13 +123,62 @@ export const queryAtividade = graphql`
 				gatsbyImageData(width: 301, placeholder: NONE, quality: 100)
 			}
 		}
-
 		logotipoJogoMemoria: file(relativePath: { eq: "logo-eugenia-3-0.png" }) {
 			childrenImageSharp {
 				gatsbyImageData(width: 224, placeholder: NONE, quality: 100)
 			}
 		}
-
+		astrazeneca: file(
+			relativePath: { eq: "astrazeneca-diabetes-logotipo.png" }
+		) {
+			childrenImageSharp {
+				gatsbyImageData(height: 50, placeholder: NONE)
+			}
+		}
+		bayer: file(relativePath: { eq: "bayer-logotipo.png" }) {
+			childrenImageSharp {
+				gatsbyImageData(height: 40, placeholder: NONE)
+			}
+		}
+		bd: file(relativePath: { eq: "bd-logotipo.png" }) {
+			childrenImageSharp {
+				gatsbyImageData(height: 50, placeholder: NONE)
+			}
+		}
+		boehringer: file(relativePath: { eq: "boehringer-logotipo.jpg" }) {
+			childrenImageSharp {
+				gatsbyImageData(height: 90, placeholder: NONE, quality: 100)
+			}
+		}
+		novartis: file(relativePath: { eq: "novartis-logotipo.jpg" }) {
+			childrenImageSharp {
+				gatsbyImageData(height: 20, placeholder: NONE, quality: 100)
+			}
+		}
+		nordisk: file(relativePath: { eq: "novo-nordisk-logotipo.jpg" }) {
+			childrenImageSharp {
+				gatsbyImageData(height: 45, placeholder: NONE, quality: 100)
+			}
+		}
+		roche: file(relativePath: { eq: "roche-logotipo.jpg" }) {
+			childrenImageSharp {
+				gatsbyImageData(height: 35, placeholder: NONE, quality: 100)
+			}
+		}
+		sanofi: file(relativePath: { eq: "sanofi-logotipo.jpg" }) {
+			childrenImageSharp {
+				gatsbyImageData(height: 55, placeholder: NONE, quality: 100)
+				fluid {
+					base64
+					src
+					srcSet
+					srcSetWebp
+					srcWebp
+					tracedSVG
+					sizes
+				}
+			}
+		}
 		imagenzinha: file(relativePath: { eq: "jogodamemoria-btn.png" }) {
 			childrenImageSharp {
 				gatsbyImageData(height: 104, placeholder: NONE, quality: 100)
@@ -191,10 +189,6 @@ export const queryAtividade = graphql`
 			childrenImageSharp {
 				gatsbyImageData(height: 104, placeholder: NONE, quality: 100)
 			}
-		}
-
-		musicCto: file(relativePath: { eq: "algo-reduzido.mp3" }) {
-			publicURL
 		}
 	}
 `

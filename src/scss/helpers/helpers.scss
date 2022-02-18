@@ -592,6 +592,9 @@
 	margin: 0 auto;
 }
 .footer-gray {
+	border-radius: 0 0 25px 25px;
+	z-index: 1;
+	position: relative;
 	.container {
 		padding: 20px;
 	}
@@ -848,4 +851,26 @@ a {
     font-weight: bolder;
 		z-index: 9;
 		cursor: pointer;
+}
+
+.post-footer-btns{
+	margin-top: -20px;
+    z-index: 0;
+		svg{
+			font-size: 28px;
+			color:white;
+			fill: blue;
+		}
+		ul{
+			display: flex;
+			min-height: 103px;
+			align-items: center;
+			justify-content: space-around;
+		}
+}
+
+
+.audioplayer{
+	position: sticky;
+	bottom: 0px;
 }
