@@ -1,4 +1,3 @@
-import React from 'react'
 // import AlimentacaoIcon from '../../../../static/images/alimentacao-icon.svg'
 
 const arrayButtons = [

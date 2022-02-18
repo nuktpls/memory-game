@@ -1,6 +1,7 @@
 import React from 'react'
 import Layout from '../layout'
 import { graphql, Link } from 'gatsby'
+import Player from './AudioPlayer'
 
 import { BiShoppingBag } from 'react-icons/bi'
 import { CgReadme } from 'react-icons/cg'
@@ -49,7 +50,8 @@ const FooterBlock = ({ social }) => {
 				<ul>
 					<li>
 						<Link to="/livro-eugenia-3-0">
-							<GoBook />O Livro
+							<GoBook />
+							Livro
 						</Link>
 					</li>
 					{/* <li><Link to='/'>Personagens</li</Link>> */}
@@ -57,13 +59,14 @@ const FooterBlock = ({ social }) => {
 					{/* <li><Link to='/'>Armas e Golpes</li</Link>> */}
 					<li>
 						<Link to="/autor-milton-bolonha">
-							<RiContactsBookFill />O Autor
+							<RiContactsBookFill />
+							Autor
 						</Link>
 					</li>
 					<li>
 						<Link to="/jogos">
 							<GiGamepadCross />
-							Jogar
+							Jogos
 						</Link>
 					</li>
 					<li>
@@ -75,10 +78,25 @@ const FooterBlock = ({ social }) => {
 					<li>
 						<Link to="/">
 							<CgReadme />
-							Leia Agora
+							Leia
 						</Link>
 					</li>
 				</ul>
+			</Layout>
+			<Layout type="ROW" opt={{ isBoxed: true, classes: 'audioplayer' }}>
+				<Player />
+				{/* <AudioPlayer
+					autoPlay
+					// src={playlist[playingNow].src}
+					src={playlist[playingNow].src}
+					// onPlay={(e) => console.log('onPlay')}
+					showSkipControls={true}
+					showJumpControls={false}
+					onClickPrevious={handleClickPrevious}
+					autoPlayAfterSrcChange={true}
+					onClickNext={handleClickNext}
+					layout="horizontal-reverse"
+				/> */}
 			</Layout>
 		</>
 	)
