@@ -1,41 +1,23 @@
-import React, { useState } from 'react'
-// import NoNameComponent from '../nu_modules'
-
+import React from 'react'
+import NoNameComponent from '../nu_modules'
 import { graphql, Link } from 'gatsby'
-
-// import AudioPlayer from 'react-h5-audio-player'
-// import 'react-h5-audio-player/lib/styles.css'
-
-// import { BiShoppingBag } from 'react-icons/bi'
-// import { CgReadme } from 'react-icons/cg'
-// import { GiBurningBook, GiPunchBlast, GiGamepadCross } from 'react-icons/gi'
-// import { RiContactsBookFill } from 'react-icons/ri'
-// import { BsBookmarkCheck } from 'react-icons/bs'
-// import { GoBook } from 'react-icons/go'
+import { GiBurningBook, GiPunchBlast, GiGamepadCross } from 'react-icons/gi'
+import { RiContactsBookFill } from 'react-icons/ri'
+import { BsBookmarkCheck } from 'react-icons/bs'
+import { GoBook } from 'react-icons/go'
 import Layout from '../modules/layout'
 import HeaderBlock from '../modules/block-builder/HeaderBlock'
 import PageHeader from '../modules/block-builder/PageHeader'
-// import ButtonsMain from '../modules/block-builder/ButtonsMain'
+import ButtonsMain from '../modules/block-builder/ButtonsMain'
 import FooterBlock from '../modules/block-builder/FooterBlock'
 // import ReactCarousel from '../modules/block-builder/ReactCarousel'
 import ShareButtons from '../modules/block-builder/ShareButtons'
 import MainWrapper from '../modules/block-builder/MainWrapper'
 
 const IndexPage = ({ data }) => {
-	// const [playingNow, setPlayingNow] = useState(0)
-
-	// function changePlayingNow(param) {
-	// 	setPlayingNow(param)
-	// }
-	// const handleClickPrevious = (params) => {
-	// 	changePlayingNow(playingNow === 0 ? playlist.length - 1 : playingNow - 1)
-	// 	// console.log(playingNow)
-	// }
-	// const handleClickNext = (params) => {
-	// 	changePlayingNow(playingNow < playlist.length - 1 ? playingNow + 1 : 0)
-	// 	// console.log(playingNow)
-	// }
-
+	console.log(
+		data.bgroom.childrenImageSharp[0].gatsbyImageData.images.fallback.srcSet
+	)
 	return (
 		<Layout
 			type="BODY"
@@ -45,6 +27,16 @@ const IndexPage = ({ data }) => {
 					data.bgroom.childrenImageSharp[0].gatsbyImageData.images.fallback,
 			}}
 		>
+			{/* <div
+				style={{
+					backgroundImage: `url(${data.bgroom.childrenImageSharp[0].gatsbyImageData.images.fallback.src})`,
+				}}
+
+			>
+				<h1>Ziniga.</h1>
+			</div> */}
+
+			{/* <NoNameComponent /> */}
 			<HeaderBlock
 				title="header-block"
 				// logotipoImg={data.logotipoImg}
@@ -105,24 +97,6 @@ const IndexPage = ({ data }) => {
 					youtube: data.site.siteMetadata.social.youtube,
 				}}
 			/>
-			{/* <NoNameComponent /> */}
-
-			{/*
-				blog posts
-infographics
-videos
-social media posts
-Subscription
-
-Sponsorship
-Partnership
-
-Advertising
-In-app purchase
-audiobook
-videos
-abertra
- */}
 		</Layout>
 	)
 }
@@ -149,13 +123,62 @@ export const queryAtividade = graphql`
 				gatsbyImageData(width: 301, placeholder: NONE, quality: 100)
 			}
 		}
-
 		logotipoJogoMemoria: file(relativePath: { eq: "logo-eugenia-3-0.png" }) {
 			childrenImageSharp {
 				gatsbyImageData(width: 224, placeholder: NONE, quality: 100)
 			}
 		}
-
+		astrazeneca: file(
+			relativePath: { eq: "astrazeneca-diabetes-logotipo.png" }
+		) {
+			childrenImageSharp {
+				gatsbyImageData(height: 50, placeholder: NONE)
+			}
+		}
+		bayer: file(relativePath: { eq: "bayer-logotipo.png" }) {
+			childrenImageSharp {
+				gatsbyImageData(height: 40, placeholder: NONE)
+			}
+		}
+		bd: file(relativePath: { eq: "bd-logotipo.png" }) {
+			childrenImageSharp {
+				gatsbyImageData(height: 50, placeholder: NONE)
+			}
+		}
+		boehringer: file(relativePath: { eq: "boehringer-logotipo.jpg" }) {
+			childrenImageSharp {
+				gatsbyImageData(height: 90, placeholder: NONE, quality: 100)
+			}
+		}
+		novartis: file(relativePath: { eq: "novartis-logotipo.jpg" }) {
+			childrenImageSharp {
+				gatsbyImageData(height: 20, placeholder: NONE, quality: 100)
+			}
+		}
+		nordisk: file(relativePath: { eq: "novo-nordisk-logotipo.jpg" }) {
+			childrenImageSharp {
+				gatsbyImageData(height: 45, placeholder: NONE, quality: 100)
+			}
+		}
+		roche: file(relativePath: { eq: "roche-logotipo.jpg" }) {
+			childrenImageSharp {
+				gatsbyImageData(height: 35, placeholder: NONE, quality: 100)
+			}
+		}
+		sanofi: file(relativePath: { eq: "sanofi-logotipo.jpg" }) {
+			childrenImageSharp {
+				gatsbyImageData(height: 55, placeholder: NONE, quality: 100)
+				fluid {
+					base64
+					src
+					srcSet
+					srcSetWebp
+					srcWebp
+					tracedSVG
+					sizes
+				}
+			}
+		}
 		imagenzinha: file(relativePath: { eq: "jogodamemoria-btn.png" }) {
 			childrenImageSharp {
 				gatsbyImageData(height: 104, placeholder: NONE, quality: 100)
@@ -167,54 +190,6 @@ export const queryAtividade = graphql`
 				gatsbyImageData(height: 104, placeholder: NONE, quality: 100)
 			}
 		}
-
-		# musicOne: file(relativePath: { eq: "agora-esta-tudo-bem.mp3" }) {
-		# 	publicURL
-		# }
-
-		# musicTwo: file(relativePath: { eq: "as-criancas-ctos.mp3" }) {
-		# 	publicURL
-		# }
-
-		# musicThree: file(relativePath: { eq: "corre-peito.mp3" }) {
-		# 	publicURL
-		# }
-
-		# musicFour: file(relativePath: { eq: "geracao-87.mp3" }) {
-		# 	publicURL
-		# }
-
-		# musicFive: file(relativePath: { eq: "heroi-vagabundo.mp3" }) {
-		# 	publicURL
-		# }
-
-		# musicSix: file(relativePath: { eq: "menor-vagabundo.mp3" }) {
-		# 	publicURL
-		# }
-
-		# musicSeven: file(relativePath: { eq: "o-sangue.mp3" }) {
-		# 	publicURL
-		# }
-
-		# musicEight: file(relativePath: { eq: "pagode-esquadrao.mp3" }) {
-		# 	publicURL
-		# }
-
-		# musicNine: file(relativePath: { eq: "quando-perdi-lagrimas.mp3" }) {
-		# 	publicURL
-		# }
-
-		# musicTen: file(relativePath: { eq: "que-dia-ruim.mp3" }) {
-		# 	publicURL
-		# }
-
-		# musicEleven: file(relativePath: { eq: "rugido-mar.mp3" }) {
-		# 	publicURL
-		# }
-
-		# musicTwelve: file(relativePath: { eq: "show-esquadrao.mp3" }) {
-		# 	publicURL
-		# }
 	}
 `
 //

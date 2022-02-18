@@ -3,12 +3,13 @@
 // const fs = require('fs')
 // var path = require('path')
 // const appRoot = require('app-root-path')
+import React from 'react'
 import { reporter } from 'gatsby'
 
 const NoNameComponent = () => {
 	// cleanConsole()
 
-	return null
+	return <h1>ola</h1>
 	// 	if (firstRun()) {
 	// 		const filename = path.resolve(`${appRoot}/.env`)
 	// 		try {
