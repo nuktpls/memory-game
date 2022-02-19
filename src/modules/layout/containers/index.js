@@ -4,6 +4,8 @@ import HeaderContainer from './HeaderContainer'
 import FooterContainer from './FooterContainer'
 import RowContainer from './RowContainer'
 import BlockImageContainer from './BlockImageContainer'
+import PlayerContainer from './PlayerContainer'
+
 // import BlockShareContainer from './BlockShareContainer'
 import ScienceContainer from './ScienceContainer'
 // import MainContainer from './MainContainer'
@@ -26,6 +28,10 @@ const LayoutResolver = ({
 				return <FooterContainer children={children} opt={opt} />
 			case 'BLOCK_IMAGE':
 				return <BlockImageContainer opt={opt} />
+			// case 'FULLSCREEN':
+			// 	return <FullScreenContainer opt={opt} children={children} />
+			case 'VIDEOPLAYER':
+				return <PlayerContainer opt={opt} children={children} url={url} />
 			// case 'BLOCK_SHARE':
 			// return <BlockShareContainer opt={opt} />
 			case 'HEADER':

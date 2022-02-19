@@ -57,18 +57,9 @@ const IndexPage = ({ data }) => {
 			{/* <ButtonsMain title="Botões Main" /> */}
 			<MainWrapper>
 				<Layout type="ROW" opt={{ alignTo: 'center', classes: 'main-btn' }}>
-					<Link to="/jogo-da-memoria">
-						<Layout
-							type="BLOCK_IMAGE"
-							opt={{ queryCard: data.imagenzinha, classes: 'btn-home-fix' }}
-						/>
-					</Link>
-					<Link to="/palavras-cruzadas">
-						<Layout
-							type="BLOCK_IMAGE"
-							opt={{ queryCard: data.palavracruzada, classes: 'btn-home-fix' }}
-						/>
-					</Link>
+					<Layout type="FULLSCREEN">
+						<Layout type="VIDEOPLAYER" url={data.promoVideo.publicURL} />
+					</Layout>
 				</Layout>
 			</MainWrapper>
 
@@ -166,6 +157,10 @@ export const queryAtividade = graphql`
 			childrenImageSharp {
 				gatsbyImageData(height: 104, placeholder: NONE, quality: 100)
 			}
+		}
+
+		promoVideo: file(relativePath: { eq: "promo-edu4dev.mp4" }) {
+			publicURL
 		}
 
 		# musicOne: file(relativePath: { eq: "agora-esta-tudo-bem.mp3" }) {

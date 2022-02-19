@@ -64,6 +64,13 @@ module.exports = {
 			},
 		},
 		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
+				name: `videos`,
+				path: `${__dirname}/static/videos`,
+			},
+		},
+		{
 			resolve: 'gatsby-plugin-react-svg',
 			options: {
 				rule: {
